@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Medecine",
+    "tax": 0
+  },
+  {
+    "name": "Food",
+    "tax": 0
+  },
+  {
+    "name": "Books",
+    "tax": 0.1
+  },
+  {
+    "name": "Electric",
+    "tax": 0.2
+  },
+  {
+    "name": "Fragrance",
+    "tax": 0.2
+  }
+]

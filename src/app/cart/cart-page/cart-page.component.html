@@ -1,0 +1,55 @@
+<div class="home">
+  <a [routerLink]="['/']">Accueil</a>
+</div>
+<div class="container">
+  <ng-container *ngIf="$cart | async as cart">
+    <ng-container *ngIf="cart.products && cart.products.length; else emptyCart">
+      <div class="product-list-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Qte</th>
+              <th>Taxes</th>
+              <th>Prix Unitaire HT</th>
+              <th>Prix Unitaire TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of cart.products; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ product.selectedQuantity }}</td>
+              <td>{{ product.taxAmount | currency : "EUR" }}</td>
+              <td>{{ product.netPrice | currency : "EUR" }}</td>
+              <td>
+                {{ product.taxAmount + product.netPrice | currency : "EUR" }}
+              </td>
+              <td>
+                <button class="button-round" (click)="remove(product)">
+                  -
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="total-amounts-table">
+        <table>
+          <tbody>
+            <tr>
+              <td>Total taxes</td>
+              <td>{{ cart.taxesAmount | currency : "EUR" }}</td>
+            </tr>
+            <tr>
+              <td>Total TTC</td>
+              <td>{{ cart.netAmount | currency : "EUR" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-template #emptyCart>
+      <div class="empty-cart">Panier vide</div>
+    </ng-template>
+  </ng-container>
+</div>

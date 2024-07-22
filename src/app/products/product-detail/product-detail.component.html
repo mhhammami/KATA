@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="cont">
+    <div class="product-card">
+      <div class="product-card__image">
+        <img src="/assets/images/product-image.png" />
+      </div>
+      <div class="product-card__info">
+        <h2 class="product-card__title">
+          {{ product.productName ? product.productName : "--" }}
+        </h2>
+        <p class="product-card__description">{{ product.category }}</p>
+        <div class="product-card__row">
+          <span class="product-card__price">{{
+            product.netPrice | currency : "EUR"
+          }}</span>
+          <input
+            type="number"
+            [(ngModel)]="quantity"
+            [max]="product.quantity"
+            [disabled]="product.quantity === 0"
+          />
+        </div>
+        <div class="product-card__row">
+          <span *ngIf="product.quantity; else notAvailable"
+            >{{ product.quantity }} produits disponibles</span
+          >
+          <ng-template #notAvailable>Non disponible</ng-template>
+          <button
+            class="product-card__btn"
+            (click)="doAdd()"
+            [disabled]="product.quantity === 0"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

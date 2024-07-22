@@ -1,0 +1,31 @@
+<div class="flex space-between">
+  <div class="col">
+    <select [(ngModel)]="category">
+      <option *ngFor="let option of $categories | async" [value]="option">
+        {{ option ?? "All" }}
+      </option>
+    </select>
+  </div>
+  <div class="cart">
+    <a [routerLink]="['/cart']">Panier: {{ $orderedProductsCount | async }}</a>
+  </div>
+</div>
+<div class="flex wrap">
+  <ng-container *ngIf="$products | async as products">
+    <ng-container *ngIf="products; else loadingComponent">
+      <div
+        class="col"
+        *ngFor="let product of products | productType : category"
+      >
+        <app-product-detail
+          [product]="product"
+          (add)="add(product, $event)"
+        ></app-product-detail>
+      </div>
+    </ng-container>
+    <ng-template #loadingComponent>
+      <div>loading !!!</div>
+      <!-- <app-loading></app-loading> -->
+    </ng-template>
+  </ng-container>
+</div>

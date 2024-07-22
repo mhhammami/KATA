@@ -1,0 +1,25 @@
+.flex {
+  display: flex;
+}
+.space-between {
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  .cart {
+    display: flex;
+    justify-content: end;
+  }
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.col {
+  flex-basis: 33.3333%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+@media (max-width: 768px) {
+  .col {
+    flex-basis: 100%;
+  }
+}
