@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { Product, ProductCategoryName } from 'src/app/models/product.model';
-import { AddProduct, RemoveProduct } from 'src/app/state/actions';
+import { AddProduct } from 'src/app/state/actions';
 import { ProductState } from 'src/app/state/reducer';
 import { SelectAvailableProducts, SelectCartProductCount, SelectCategoryNames } from 'src/app/state/selectors';
 

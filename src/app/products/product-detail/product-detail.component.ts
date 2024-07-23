@@ -13,7 +13,7 @@ export class ProductDetailComponent {
   quantity = 1;
 
   doAdd() {
-    if (this.product.quantity) {
+    if (this.product.quantity && this.product.quantity >= this.quantity) {
       this.add.emit(this.quantity);
     }
   }

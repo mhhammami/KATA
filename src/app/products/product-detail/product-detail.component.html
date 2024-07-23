@@ -24,7 +24,9 @@
           <span *ngIf="product.quantity; else notAvailable"
             >{{ product.quantity }} produits disponibles</span
           >
-          <ng-template #notAvailable>Non disponible</ng-template>
+          <ng-template #notAvailable>
+            <span class="product-not-available">Non disponible</span>
+          </ng-template>
           <button
             class="product-card__btn"
             (click)="doAdd()"
